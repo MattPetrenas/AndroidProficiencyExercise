@@ -25,7 +25,7 @@ extraneous white-space etc. This means some rows will be larger than others.
 4. Implement a refresh function allowing the data & view to be updated
 - Use either a refresh button or pull down to refresh.
 5. Should not block UI when loading the data from the json feed.
-6. Each row of the table should look roughly like the following image:
+6. Each row of the table should look roughly like the provided image.
 Additional Guidelines
 1. Use a Github repository to manage the source code. A clear Git history showing your process is required.
 Commit your changes to git in small chunks with meaningful comments.
