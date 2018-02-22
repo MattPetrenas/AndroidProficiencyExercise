@@ -1,6 +1,7 @@
 package com.matt.androidproficiencyexercise.UserInterfaceUtils;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.matt.androidproficiencyexercise.Models.FeedRow;
 import com.matt.androidproficiencyexercise.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,14 +46,21 @@ public class FeedRowListAdapter extends ArrayAdapter<FeedRow> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.feed_list_element, parent, false);
-            viewHolder.titleView = (TextView) convertView.findViewById(R.id.title_view);
-            viewHolder.descriptionView = (TextView) convertView.findViewById(R.id.description_view);
+            viewHolder.titleView = convertView.findViewById(R.id.title_view);
+            viewHolder.descriptionView = convertView.findViewById(R.id.description_view);
+            viewHolder.imageView = convertView.findViewById(R.id.image_view);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.titleView.setText(dataModel.getTitle());
         viewHolder.descriptionView.setText(dataModel.getDescription());
+        if(dataModel.getImageHRef()!="") {
+            Picasso
+                    .with(mContext)
+                    .load(dataModel.getImageHRef())
+                    .into(viewHolder.imageView);
+        }
         // Return the completed view to render on screen
         return convertView;
     }
