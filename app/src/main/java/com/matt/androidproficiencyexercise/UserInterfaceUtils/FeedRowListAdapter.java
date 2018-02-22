@@ -61,6 +61,10 @@ public class FeedRowListAdapter extends ArrayAdapter<FeedRow> {
                     .load(dataModel.getImageHRef())
                     .into(viewHolder.imageView);
         }
+        else{
+            //Manually set bitmap to null, otherwise previous images in this view holder will remain.
+            viewHolder.imageView.setImageBitmap(null);
+        }
         // Return the completed view to render on screen
         return convertView;
     }
